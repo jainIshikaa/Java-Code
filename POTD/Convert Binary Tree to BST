@@ -1,0 +1,48 @@
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int item){
+        data = item;
+        left = right = null;
+    }
+} 
+
+
+class Solution
+{
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+     
+        //We know->Inorder of bst is sorted array.
+        //Here performing reverse, given a bt,store its nodes,sort them,do inorder of arraylist with 
+        //given bt root (have to keep original structure of bt) ,will get bst.
+        //Approach-> First store all nodes of bt in arraylist.Sort them.
+        //Perform inorder traversal of sorted list with given bt root.
+        //Update tree's node value with elements in list.
+    int i=0;
+    Node binaryTreeToBST(Node root)
+    {
+        ArrayList<Integer> list=new ArrayList<>();
+        getNodes(root,list);
+        Collections.sort(list);
+        inorder(root,list);
+        return root;
+    }
+    
+    void getNodes(Node root,ArrayList<Integer> list){
+        if(root==null)
+        return;
+        getNodes(root.left,list);
+        list.add(root.data);
+        getNodes(root.right,list);
+        
+    }
+    
+    void inorder(Node root,ArrayList<Integer> list){
+        if(root==null) return;
+        inorder(root.left,list);
+        root.data=list.get(i++);
+        inorder(root.right,list);
+    }
+}
