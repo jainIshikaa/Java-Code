@@ -1,0 +1,14 @@
+class Solution{
+public static boolean isLucky(int n){
+boolean ans=isLuckyUtil(int n,2);
+return ans;}
+
+public static boolean isLuckyUtil(int n,int counter){
+if(n<counter)
+return true;
+if(n%counter==0)
+return false;
+
+return isLuckyUtil(n-(n/counter),counter+1);   //or ++counter
+}
+}
