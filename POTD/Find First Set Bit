@@ -1,0 +1,26 @@
+Date-19/09/23
+class Solution
+{
+    //Function to find position of first set bit in the given number.
+    public static int getFirstSetBit(int n){
+            
+      /* int i=1;//int c=1;
+        while(i!=n){
+            if((n&1)==1)
+            break;
+            n=(n>>1);
+            i++;
+            // c++;
+        }
+        return i;*/ 
+        if(n==0)
+        return 0;
+       else{ int i=1;
+        while(n!=0){
+            if((n&1)==1)
+            break;
+            n>>=1;i++;
+        }
+            return i;}
+    }
+}
