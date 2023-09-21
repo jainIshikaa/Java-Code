@@ -1,0 +1,15 @@
+Date-20/09/23
+class Solution
+{
+    
+    ArrayList<Integer> rotate(int N, int D)
+    {
+        ArrayList<Integer> ans=new ArrayList<>();
+        D%=16;
+        int leftR=(N<<D |N>>(16-D))&65535;
+        int rightR=(N>>D |N<<(16-D))&65535;
+        ans.add(leftR);
+        ans.add(rightR);
+        return ans;
+    }
+}
