@@ -1,0 +1,29 @@
+Date-23/09/23
+class Solution {
+
+    
+    // a: input array
+    // n: size of array
+    // Function to find equilibrium point in the array.
+    public static int equilibriumPoint(long arr[], int n) {
+    int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+        }
+        if(n==1)
+        return (int)arr[0];
+        if(sum-arr[0]==0)
+        return 1;
+        if(sum-arr[n-1]==0)
+        return n;
+        int prev=(int) arr[0];
+        sum-=prev;
+        for(int i=1;i<n;i++){
+            sum-=arr[i];
+            if(prev==sum)
+            return i+1;
+            prev+=arr[i];
+        }
+        return -1;
+    }
+}
