@@ -1,0 +1,29 @@
+Date-27/09/2023
+
+
+//User function Template for Java
+
+class Solution{
+    // Function for finding maximum and value pair
+    public static ArrayList<Integer> printClosest (int arr[], int brr[], int n, int m, int x) {
+        ArrayList<Integer> ans=new ArrayList<Integer>(Arrays.asList(-1,-1));
+        int minDiff=Integer.MAX_VALUE;
+        int s=0,e=m-1;
+        while(s<n && e>=0){
+            int sum=arr[s]+brr[e];
+            if(Math.abs(sum-x)<minDiff){
+                minDiff=Math.abs(sum-x);
+                ans.set(0,arr[s]);
+                ans.set(1,brr[e]);
+            }
+            if(sum<x){
+                s++;
+            }
+            else{
+               e--;
+            }
+        }
+        // ans.add(minDiff);
+        return ans;
+    }
+}
