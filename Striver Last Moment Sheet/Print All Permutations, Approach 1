@@ -1,0 +1,28 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	static ArrayList<ArrayList<Integer>> permutations(ArrayList<Integer> arr, int size) {
+		boolean[] map=new boolean[size];
+		ArrayList<ArrayList<Integer>> list=new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> ds=new ArrayList<>();
+		f(list,map,ds,arr,size);
+		return list;
+	}
+	static void f(ArrayList<ArrayList<Integer>> list,boolean[] map,ArrayList<Integer> ds,ArrayList<Integer> arr, int size){
+		if(ds.size()==size){
+			list.add(new ArrayList<>(ds));
+			return;
+		}
+
+		for(int i=0;i<size;i++){
+			if(map[i]==false){
+				map[i]=true;
+				ds.add(arr.get(i));
+				f(list,map,ds,arr,size);
+				map[i]=false;
+				ds.remove(ds.size()-1);
+			}
+		}
+	}
+
+}
